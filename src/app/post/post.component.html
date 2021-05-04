@@ -1,0 +1,18 @@
+
+{{err}}
+
+<table>
+    <tr>
+        <td>post id</td>
+        <td>post title</td>
+        <td>post body</td>
+        <td>user id</td>
+    </tr>
+    <tr *ngFor="let p of postList">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.body}}</td>
+        <td>{{p.userId}}</td>
+
+    </tr>
+</table>

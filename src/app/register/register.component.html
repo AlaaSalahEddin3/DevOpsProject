@@ -1,0 +1,66 @@
+<p>register works!</p>
+
+<div style="margin:auto;width: 400px;">
+    <div>
+
+        <form>
+
+            <div class="form-group">
+                <label>User Name</label>
+
+                <input type="text" pattern='[a-zA-Z]+' class="form-control"
+                    [class.is-invalid]="name.invalid && name.touched" #name='ngModel' [(ngModel)]="userModel.name"
+                    name="name" required>
+                <div *ngIf="name.errors && (name.invalid && name.touched)">
+                    <small class="text-danger" *ngIf="name.errors.required">Name Is Requird</small><br>
+                    <small class="text-danger" *ngIf="name.errors.pattern"> Name Contains only Letter</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label> User Email</label>
+                <input type="email" class="form-control"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #mail='ngModel'
+                    [class.is-invalid]="mail.invalid && mail.touched" required [(ngModel)]="userModel.email"
+                    name="mail">
+                <div *ngIf="mail.errors && (mail.invalid && mail.touched)">
+                    <small class="text-danger" *ngIf="mail.errors.required">Email Is Requird</small><br>
+                    <small class="text-danger" *ngIf="mail.errors.pattern"> Not valid Email</small>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" #pass='ngModel'
+                    [class.is-invalid]="pass.invalid && pass.touched" required [(ngModel)]="userModel.password"
+                    name="pass">
+
+                <div *ngIf="pass.errors && (pass.invalid && pass.touched)">
+                    <small class="text-danger" *ngIf="pass.errors.required">Password Is Requird</small><br>
+                    <small class="text-danger" *ngIf="name.errors.pattern"> Name Contains only Letter</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>confirm Password</label>
+                <input type="password" class="form-control" #cpass="ngModel"
+                    [class.is-invalid]="cpass.invalid && cpass.touched" required [(ngModel)]="userModel.confirmPassword"
+                    name="cpass">
+
+                <div *ngIf="cpass.errors && (cpass.invalid && cpass.touched)">
+                    <small class="text-danger" *ngIf="cpass.errors.required">confirm Password Is Requird</small><br>
+
+                </div>
+
+            </div>
+            <div class="form-select">
+                <label>You Heared About Us on</label>
+                <select>
+                    <option *ngFor="let v of views">
+                        {{v}}
+                    </option>
+                </select>
+
+            </div>
+            <input type="submit" value="Register" class="btn btn-success">
+        </form>
+    </div>
+</div>

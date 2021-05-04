@@ -1,0 +1,40 @@
+<p>notes works!</p>
+<form [formGroup]="pform">
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="form-group" >
+
+        <select>
+            <option *ngFor="let p of products" >
+                {{p}}
+            </option>
+        </select>
+    </div>
+    <div class="form-check" formControlName="check">
+        <label>Do you Want to Add discount?</label>
+        <input type="checkbox" formControlName="check">
+        </div>
+       
+<div class=form-group  *ngIf="check.value">
+    <label>Enter Discount</label>
+<input type="number" class="form-control"  formControllName="discount">
+</div>    
+       
+
+    <div class="form-group">
+        <button (click)="Add()">Add comment</button>
+        
+        <div formArrayName="comments" *ngFor="let newComment of comments.controls; let i=index">
+            <label>Add New Comment</label>
+            <input type="text" class="form-control" [formControlName]="i">
+           
+        </div>
+              
+    </div>
+
+    <div class="form-group">
+
+    </div>
+
+</form>

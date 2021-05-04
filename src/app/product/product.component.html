@@ -1,0 +1,89 @@
+
+
+
+<h1 class="text-danger">{{storeName}}</h1>
+<img [src]="storeLogo"><br>
+<br><br>
+<!--<h3 *ngIf="discount=='noDiscount'">we offer An Expicit discount of {{discount}}</h3>-->
+<label for="">Select Categories</label><select style="width: 400px;">
+   
+  <option  *ngFor="let cat of categories">{{cat.name}}</option>
+
+</select>
+<br><br>
+<table *ngIf="!Ispurshased">
+    <tr>
+        <td>
+Product Id
+        </td>
+        <td>
+Product Name
+        </td>
+        <td>
+                     Product Image
+        </td>
+        <td>
+            Product Quantity
+        </td>
+        <td>
+            Product Price
+        </td>
+    </tr>
+<tr *ngFor="let p of ps">
+    <td >{{p.Id}}</td>
+    <td ><img src={{p.image}}></td>
+    <td >{{p.Name}}</td>
+    <td >{{p.quantity}}</td>
+    <td >{{p.price}}</td>
+</tr>
+</table> 
+<h2 *ngIf="Ispurshased">
+    Thank You  {{ClientName}}
+</h2>
+<button (click)="hide()" style="width: 200px;background-color: rgb(197, 207, 188);margin-bottom: 100px;height: 40px;">Buy Now</button>
+
+<div *ngIf="Ispurshased";then thenBlock; else elseBlock>
+
+</div>
+
+<ng-template #thenBlock>
+    <h2>
+        Thank You  {{ClientName}}
+    </h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <div>
+        <table>
+            <tr>
+                <td>
+        Product Id
+                </td>
+                <td>
+        Product Name
+                </td>
+                <td>
+                             Product Image
+                </td>
+                <td>
+                    Product Quantity
+                </td>
+                <td>
+                    Product Price
+                </td>
+            </tr>
+        <tr *ngFor="let p of ps" >
+            <td >{{p.Id}}</td>
+            <td ><img src={{p.image}}></td>
+            <td >{{p.Name}}</td>
+            <td >{{p.quantity}}</td>
+            <td >{{p.price}}</td>
+        </tr>
+        </table> 
+    </div>
+    
+</ng-template>
+
+<button (click)="getProdwithDiscount()" class="btn">Prodduct with Discounts</button>
+<button (click)="getProdwithOutDiscount()">Product without Discounts</button>
+<router-outlet></router-outlet>
